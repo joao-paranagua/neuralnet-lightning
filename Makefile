@@ -1,6 +1,6 @@
 .PHONY: venv clean
 
-VENV = cern
+VENV = neuralnet-env
 PYTHON = $(VENV)/bin/python
 PIP = $(VENV)/bin/pip
 

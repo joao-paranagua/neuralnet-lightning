@@ -1,7 +1,7 @@
 #!/bin/bash
-if [ ! -d "cern" ]; then
+if [ ! -d "neuralnet-env" ]; then
     echo "Virtual environment not found. Run 'make venv' first."
 else
-    source cern/bin/activate
+    source neuralnet-env/bin/activate
     echo "Virtual environment activated."
 fi

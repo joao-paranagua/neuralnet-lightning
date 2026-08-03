@@ -3,7 +3,7 @@ import yaml
 import sys
 import os
 
-# Garante que o Python encontre o pacote AI a partir da raiz do projeto
+# Garante que o Python encontre o pacote ai a partir da raiz do projeto
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 def load_config(config_path):
@@ -26,7 +26,7 @@ def main():
     model_type = config.get("model", "CNN2D")
     
     if model_type == "CNN2D":
-        from AI.pipeline.pipeline_cnn2d import PipelineCNN2D
+        from ai.pipeline.pipeline_cnn2d import PipelineCNN2D
         pipeline = PipelineCNN2D(
             data_path=config.get("data_path"),
             max_files=config.get("max_files"),

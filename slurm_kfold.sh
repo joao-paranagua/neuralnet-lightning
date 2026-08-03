@@ -45,7 +45,7 @@ for (( fold=1; fold<=NUM_FOLDS; fold++ )); do
          --job-name="CNN_2D_Cern_fold_${fold}" \
          --output="${LOG_DIR}/fold_${fold}_%j.out" \
          --error="${LOG_DIR}/fold_${fold}_%j.err" \
-         --wrap="python AI/run.py --config $CONFIG_FILE --fold $fold"
+         --wrap="python ai/run.py --config $CONFIG_FILE --fold $fold"
          
     # Pequeno delay apenas para evitar concorrência no gerenciador de filas
     sleep 1

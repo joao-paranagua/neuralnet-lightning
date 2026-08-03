@@ -7,13 +7,13 @@ from sklearn.model_selection import train_test_split
 # Adiciona o diretório raiz ao path para garantir que as importações funcionem se o script for rodado de qualquer lugar
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from AI.loader.loader import DataLoader
-from AI.label.label_generator import LabelGenerator
-from AI.preprocess.cnn2d import PreprocessCNN2D
-from AI.models.cnn2d import ModelCNN2D
-from AI.trainer.trainer import ModelTrainer
-from AI.evaluation.monitor import ModelMonitor
-from AI.evaluation.summary import ModelSummary
+from ai.loader.loader import DataLoader
+from ai.label.label_generator import LabelGenerator
+from ai.preprocess.cnn2d import PreprocessCNN2D
+from ai.models.cnn2d import ModelCNN2D
+from ai.trainer.trainer import ModelTrainer
+from ai.evaluation.monitor import ModelMonitor
+from ai.evaluation.summary import ModelSummary
 
 class PipelineCNN2D:
     def __init__(self, data_path=None, max_files=None, label_col='label', model_name="CNN2D", max_epochs=20, batch_size=32, patience=5, num_workers=0):
