@@ -1,4 +1,4 @@
-.PHONY: venv clean
+.PHONY: venv clean copy-data
 
 VENV = neuralnet-env
 PYTHON = $(VENV)/bin/python
@@ -8,6 +8,9 @@ venv:
 	python3 -m venv $(VENV)
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
+
+copy-data:
+	cp -r /mnt/shared/storage03/projects/cern/lorenzetti/r1/parquet data/
 
 clean:
 	rm -rf $(VENV)
