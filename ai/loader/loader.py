@@ -55,8 +55,6 @@ class DataLoader:
     def execute(self):
         arquivos = self.get_files()
         df = self.load_dataset(arquivos)
-        if df is not None:
-            print(df.head())
         return df
 
 if __name__ == "__main__":

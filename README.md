@@ -42,10 +42,10 @@ O projeto automatiza o fluxo de carregamento de dados (ex: arquivos Parquet), pr
 As configurações da execução são definidas no arquivo `config.yaml`. Exemplo de parâmetros suportados:
 
 ```yaml
-model: "CNN2D"                                      # Modelo a ser utilizado
-data_path: data/parquet/mc25_13TeV...parquet        # Caminho para os dados
+model: "CNN2D"                                     # Modelo a ser utilizado
+data_path: data/parquet/mc25_13TeV...parquet       # Caminho para os dados
 max_files: 100                                     # Quantidade máxima de arquivos
-label_col: "has_truth_clus"                        # Coluna de rótulo (label)
+label_col: "label"                                 # Coluna de rótulo (label)
 max_epochs: 200                                    # Número máximo de épocas
 batch_size: 64                                     # Tamanho do batch
 learning_rate: 0.001                               # Taxa de aprendizado

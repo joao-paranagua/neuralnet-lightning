@@ -2,8 +2,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import roc_curve, auc, confusion_matrix
 import os
-import mplhep as hep
-plt.style.use(hep.style.ATLAS)
+try:
+    import mplhep as hep
+    plt.style.use(hep.style.ATLAS)
+except ImportError:
+    pass
+
 
 class ModelMonitor:
     def __init__(self, output_dir="results/plots"):

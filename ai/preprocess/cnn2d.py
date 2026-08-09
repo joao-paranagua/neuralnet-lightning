@@ -69,7 +69,7 @@ class PreprocessCNN2D:
             
         return X
 
-    def get_labels(self, df, label_col='has_truth_clus'):
+    def get_labels(self, df, label_col='label'):
         """Retorna os labels."""
         if label_col in df.columns:
             return df[label_col].values.astype(np.float32)

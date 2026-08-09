@@ -5,10 +5,10 @@
 # ==============================================================================
 
 # Máquinas GPU disponíveis na sua fila/reserva atual
-MACHINES=("caloba68" "caloba69" "caloba70" "caloba71")
+MACHINES=("caloba68" "caloba69" "caloba71")
 
 # Parâmetros de entrada com valores padrão
-NUM_MACHINES=${1:-4}        # Padrão: usar até 4 máquinas
+NUM_MACHINES=${1:-3}        # Padrão: usar até 4 máquinas
 NUM_FOLDS=${2:-3}           # Padrão: rodar 3 folds (deve bater com o yaml)
 CONFIG_FILE=${3:-"config.yaml"}
 

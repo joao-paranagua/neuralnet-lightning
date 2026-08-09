@@ -10,13 +10,14 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 from ai.loader.loader import DataLoader
 from ai.label.label_generator import LabelGenerator
 from ai.preprocess.cnn2d import PreprocessCNN2D
+from ai.preprocess.balancer import DataBalancer
 from ai.models.cnn2d import ModelCNN2D
 from ai.trainer.trainer import ModelTrainer
 from ai.evaluation.monitor import ModelMonitor
 from ai.evaluation.summary import ModelSummary
 
 class PipelineCNN2D:
-    def __init__(self, data_path=None, max_files=None, label_col='label', model_name="CNN2D", max_epochs=20, batch_size=32, patience=5, num_workers=0):
+    def __init__(self, data_path=None, max_files=None, label_col='label', model_name="CNN2D", max_epochs=20, batch_size=32, patience=5, num_workers=0, balance_data=True):
         """
         Inicializa o pipeline completo para o modelo CNN 2D.
         """
@@ -28,6 +29,7 @@ class PipelineCNN2D:
         
         self.loader = DataLoader(data_path=data_path, max_files=max_files)
         self.preprocessor = PreprocessCNN2D()
+        self.balancer = DataBalancer() if balance_data else None
         
         # O trainer vai salvar os checkpoints dentro de results/CNN2D/lightning_logs
         self.trainer = ModelTrainer(
@@ -95,10 +97,14 @@ class PipelineCNN2D:
             print("Erro: Labels não encontrados.")
             return None
             
+        if self.balancer:
+            print("\n-> Etapa 2.5: Balanceamento de Dados...")
+            X, Y = self.balancer.apply(X, Y)
+            
         # Separa um Test Set absoluto (holdout verdadeiro) para a Etapa 4 de Avaliação
         # Este dado NUNCA é visto pelo Trainer.
         print(f"Separando {test_size*100}% dos dados para Teste Isolado...")
-        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=42)
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=42, shuffle=True)
         
         # Etapa 3: Treinamento
         print(f"\n-> Etapa 3: Treinamento (K-Fold={use_kfold})...")

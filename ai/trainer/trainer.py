@@ -138,7 +138,6 @@ class ModelTrainer:
                 num_workers=self.num_workers
             )
             
-            # CRÍTICO: Instancia um modelo "zerado" para este fold
             model = model_class(**model_kwargs)
             
             # Diretório de logs específico para o fold

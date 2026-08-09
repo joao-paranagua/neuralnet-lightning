@@ -30,7 +30,7 @@ def main():
         pipeline = PipelineCNN2D(
             data_path=config.get("data_path"),
             max_files=config.get("max_files"),
-            label_col=config.get("label_col", "has_truth_clus"),
+            label_col=config.get("label_col", "label"),
             model_name=model_type,
             max_epochs=config.get("max_epochs", 20),
             batch_size=config.get("batch_size", 32),
